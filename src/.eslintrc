@@ -5,7 +5,13 @@
     "browser": true,
     "node": true
   },
-  "rules": {},
+  "rules": {
+    "semi": "off",
+    "quotes": "off",
+    "arrow-parens": "off",
+    "require-jsdoc": "off",
+    "linebreak-style": "off"
+  },
   "extends": [
     "eslint:recommended",
     "google"
