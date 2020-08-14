@@ -1,62 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
+import { ExcelComponent } from "@core/ExcelComponent";
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
+export class Table extends ExcelComponent {
+  static className = 'excel__table'
 
-<body>
-  <div class="excel">
-
-    <div class="excel__header">
-      <input type="text" class="input" value="Новая таблица">
-      <div>
-        <div class="button">
-          <i class="material-icons">delete</i>
-        </div>
-        <div class="button">
-          <i class="material-icons">exit_to_app</i>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="excel__toolbar">
-      <div class="button">
-        <i class="material-icons">format_align_left</i>
-      </div>
-
-      <div class="button">
-        <i class="material-icons">format_align_center</i>
-      </div>
-
-      <div class="button">
-        <i class="material-icons">format_align_right</i>
-      </div>
-
-      <div class="button">
-        <i class="material-icons">format_bold</i>
-      </div>
-
-      <div class="button">
-        <i class="material-icons">format_italic</i>
-      </div>
-
-      <div class="button">
-        <i class="material-icons">format_underline</i>
-      </div>
-    </div>
-
-
-    <div class="excel__formula">
-      <div class="info">fx</div>
-      <div class="input" contenteditable="true" spellcheck="false"></div>
-    </div>
-
-
-    <div class="excel__table">
+  toHTML() {
+    return `
       <div class="row">
 
         <div class="row-info"></div>
@@ -108,13 +56,7 @@
           <div class="cell" contenteditable="true">2</div>
           <div class="cell" contenteditable="true">3</div>
         </div>
-      </div>
-
-
-
-    </div>
-
-  </div>
-</body>
-
-</html>
+      </div>    
+    `
+  }
+}
