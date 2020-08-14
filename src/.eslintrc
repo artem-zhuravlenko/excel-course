@@ -15,6 +15,7 @@
     "no-trailing-spaces": "off",
     "object-curly-spacing": "off",
     "no-unused-vars": "off",
+    "operator-linebreak": "off",
   },
   "extends": [
     "eslint:recommended",
