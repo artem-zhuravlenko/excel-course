@@ -22,7 +22,6 @@ class Dom {
     if (node instanceof Dom) {
       node = node.$el
     }
-    console.log(this.$el);
     if (Element.prototype.append) {
       this.$el.append(node)
     } else {
