@@ -11,7 +11,14 @@
     "arrow-parens": "off",
     "require-jsdoc": "off",
     "linebreak-style": "off",
-    "eol-last": "off"
+    "eol-last": "off",
+    "no-trailing-spaces": "off",
+    "object-curly-spacing": "off",
+    "no-unused-vars": "off",
+    "operator-linebreak": "off",
+    "padded-blocks": "off",
+    "indent": "off",
+    "comma-dangle": "off",
   },
   "extends": [
     "eslint:recommended",
