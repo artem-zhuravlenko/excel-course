@@ -16,6 +16,9 @@
     "object-curly-spacing": "off",
     "no-unused-vars": "off",
     "operator-linebreak": "off",
+    "padded-blocks": "off",
+    "indent": "off",
+    "comma-dangle": "off",
   },
   "extends": [
     "eslint:recommended",
