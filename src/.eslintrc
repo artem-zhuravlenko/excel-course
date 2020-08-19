@@ -19,6 +19,7 @@
     "padded-blocks": "off",
     "indent": "off",
     "comma-dangle": "off",
+    "guard-for-in": "off",
   },
   "extends": [
     "eslint:recommended",
