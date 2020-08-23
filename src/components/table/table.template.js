@@ -3,10 +3,17 @@ const CODES = {
   Z: 90,
 }
 
-function toCell(_, num) {
-  return `
-    <div class="cell" data-col="${num}"contenteditable></div>
-  `
+function toCell(row) {
+  return function (_, col) {
+    return `
+    <div 
+      class="cell"
+      contenteditable
+      data-type="cell"
+      data-col="${col}" 
+      data-id="${row}:${col}" 
+    ></div>`
+  }
 }
 
 function toColumn(col, index) {
@@ -37,7 +44,7 @@ function toChar(_, index) {
   return String.fromCharCode(CODES.A + index)
 }
 
-export const createTable = (rowsCount = 15) => {
+export const createTable = (rowsCount = 105) => {
   const colsCount = CODES.Z - CODES.A + 1
   const rows = []
 
@@ -49,12 +56,12 @@ export const createTable = (rowsCount = 15) => {
 
   rows.push(createRow(cols))
 
-  for (let i = 0; i < rowsCount; i++) {
+  for (let row = 0; row < rowsCount; row++) {
     const cells = new Array(colsCount)
       .fill('')
-      .map(toCell)
+      .map(toCell(row))
       .join('')
-    rows.push(createRow(cells, i + 1))
+    rows.push(createRow(cells, row + 1))
   }
 
   // for (let i = 0; i < rowsCount; i++) {
