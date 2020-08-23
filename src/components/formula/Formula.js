@@ -23,20 +23,20 @@ export class Formula extends ExcelComponent {
     `
   }
 
-  init() {
-    super.init()
-    this.$formula = this.$root.find('#input')
-    this.$on('table:select', $cell => {
-      this.$formula.text($cell.text())
-    })
-    this.$on('table:input', $cell => {
-      this.$formula.text($cell.text())
-    })
-  }
+  // init() {
+  //   super.init()
+  //   this.$formula = this.$root.find('#input')
+  //   this.$on('table:select', $cell => {
+  //     this.$formula.text($cell.text())
+  //   })
+  //   this.$on('table:input', $cell => {
+  //     this.$formula.text($cell.text())
+  //   })
+  // }
 
   onInput(event) {
-    const text = event.target.textContent.trim()
-    console.log(text);
+    console.log(event.target.textContent);
+    // const text = event.target.textContent.trim()
     this.$emit('formula:input', $(event.target).text())
   }
 
