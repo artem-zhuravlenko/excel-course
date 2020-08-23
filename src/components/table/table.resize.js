@@ -20,9 +20,6 @@ export function resizeHandler($root, event) {
     const delta = e.pageX - coords.right
     value = coords.width + delta
     $resizer.css({ right: -delta + 'px' })
-    // $parent.$el.style.width = value + 'px'
-    // $parent.css({ width: value + "px" })
-    // cols.forEach(el => el.style.width = value + 'px')
   }
 
   const rowRes = e => {

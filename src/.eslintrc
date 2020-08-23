@@ -20,6 +20,7 @@
     "indent": "off",
     "comma-dangle": "off",
     "guard-for-in": "off",
+    "space-before-function-paren": "off",
   },
   "extends": [
     "eslint:recommended",
