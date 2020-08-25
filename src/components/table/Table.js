@@ -35,15 +35,19 @@ export class Table extends ExcelComponent {
     this.$on('formula:done', () => {
       this.selection.current.focus()
     })
+
+    this.$subscribe(state => {
+      console.log('Table state ', state);
+    })
   }
 
   selectCell($cell) {
     this.selection.select($cell)
     this.$emit('table:select', $cell)
+    this.$dispatch({ type: 'TEST' })
   }
 
   onMousedown(event) {
-    console.log(event);
     if (shouldResize(event)) {
       resizeHandler(this.$root, event)
     } else if (isCell(event)) {
@@ -53,7 +57,7 @@ export class Table extends ExcelComponent {
           .map(id => this.$root.find(`[data-id="${id}"]`))
         this.selection.selectGroup($cells)
       } else {
-        this.selection.select($target)
+        this.selectCell($target)
       }
     }
   }
