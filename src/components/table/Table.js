@@ -7,6 +7,7 @@ import { TableSelection } from "./TableSelection";
 import { range } from './table.functions';
 
 export class Table extends ExcelComponent {
+
   constructor($root, options) {
     super($root, {
       name: 'Table',
@@ -47,9 +48,19 @@ export class Table extends ExcelComponent {
     this.$dispatch({ type: 'TEST' })
   }
 
+  async resizeTable(event) {
+    try {
+      const data = await resizeHandler(this.$root, event)
+      this.$dispatch({ type: 'TABLE_RESIZE', data })
+      console.log(data);
+    } catch (error) {
+      console.warn(error.message);
+    }
+  }
+
   onMousedown(event) {
     if (shouldResize(event)) {
-      resizeHandler(this.$root, event)
+      this.resizeTable(event)
     } else if (isCell(event)) {
       const $target = $(event.target)
       if (event.shiftKey) {
