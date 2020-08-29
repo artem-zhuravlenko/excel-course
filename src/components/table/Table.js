@@ -5,7 +5,8 @@ import { shouldResize, isCell, matrix, nextSelector } from "./table.functions";
 import { resizeHandler } from "./table.resize";
 import { TableSelection } from "./TableSelection";
 import { range } from './table.functions';
-
+import { TABLE_RESIZE } from "../../redux/types";
+import * as actions from '@/redux/actions'
 export class Table extends ExcelComponent {
 
   constructor($root, options) {
@@ -15,10 +16,11 @@ export class Table extends ExcelComponent {
       ...options
     })
   }
+
   static className = 'excel__table'
 
   toHTML() {
-    return createTable()
+    return createTable(20)
   }
 
   prepare() {
@@ -51,8 +53,8 @@ export class Table extends ExcelComponent {
   async resizeTable(event) {
     try {
       const data = await resizeHandler(this.$root, event)
-      this.$dispatch({ type: 'TABLE_RESIZE', data })
-      console.log(data);
+      this.$dispatch(actions.tableResize(data))
+      // console.log(data);
     } catch (error) {
       console.warn(error.message);
     }
