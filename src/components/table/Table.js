@@ -41,9 +41,6 @@ export class Table extends ExcelComponent {
       this.selection.current.focus()
     })
 
-    this.$subscribe(state => {
-      console.log('Table state ', state);
-    })
   }
 
   selectCell($cell) {
