@@ -7,6 +7,7 @@ import { TableSelection } from "./TableSelection";
 import { range } from './table.functions';
 import { TABLE_RESIZE } from "../../redux/types";
 import * as actions from '@/redux/actions'
+import { defaultStyles } from '@/constants'
 export class Table extends ExcelComponent {
 
   constructor($root, options) {
@@ -41,12 +42,24 @@ export class Table extends ExcelComponent {
       this.selection.current.focus()
     })
 
+    this.$on('toolbar:applyStyle', value => {
+      this.selection.applyStyle(value)
+      this.$dispatch(actions.applyStyle({
+        value,
+        ids: this.selection.selectedIds
+      }))
+    })
   }
 
   selectCell($cell) {
     this.selection.select($cell)
     this.$emit('table:select', $cell)
-    this.$dispatch({ type: 'TEST' })
+    const styles = $cell.getStyles(Object.keys(defaultStyles))
+    console.log('Styles to dispatch', styles);
+    this.$dispatch(actions.changeStyles(styles))
+    // Какая-то фигня!
+    // console.log(defaultStyle)
+    // console.log($cell.getStyles(Object.keys(defaultStyles)));
   }
 
   async resizeTable(event) {
